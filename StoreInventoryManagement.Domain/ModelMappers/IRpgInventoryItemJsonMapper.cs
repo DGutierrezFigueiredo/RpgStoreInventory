@@ -10,7 +10,7 @@ namespace StoreInventoryManagement.Domain.ModelMappers
 {
     public interface IRpgInventoryItemJsonMapper
     {
-        public RpgInventoryItem RpgInventoryItemMapper(RpgInventoryItem rpgInventoryItem, RpgInventoryItemJson rpgInventoryItemJson);
+        public RpgInventoryItem RpgInventoryItemMapper(RpgInventoryItemJson rpgInventoryItemJson);
 
     }
 }

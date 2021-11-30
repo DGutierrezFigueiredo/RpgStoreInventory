@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreInventoryManagement.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StoreInventoryManagement.Domain.Models
 {
-    public class RpgInventoryItemJson
+    public class RpgInventoryItemJson //: IRpgInventoryItemJson
     {
         ///[JsonPropertyName("Id")]
         //public string Id { get; }
@@ -31,8 +32,8 @@ namespace StoreInventoryManagement.Domain.Models
         [JsonPropertyName("Item Rarity")]
         public string ItemRarity { get; set; }
 
-        [JsonPropertyName("Creation Date On DB 'dd/mm/yy'")]
-        public DateTime ItemCreationDate { get; set; }
+        //[JsonPropertyName("Creation Date On DB 'dd/mm/yy'")]
+        //public DateTime ItemCreationDate { get; set; }
 
 
 
@@ -43,7 +44,7 @@ namespace StoreInventoryManagement.Domain.Models
         }
 
         public RpgInventoryItemJson(string inventoryItemName, string itemDescription, bool isKeyItem, decimal itemSellPrice, 
-                                    decimal itemBuyPrice, string itemRarity, DateTime itemCreationDate)
+                                    decimal itemBuyPrice, string itemRarity)
         {
             InventoryItemName = inventoryItemName;
             ItemDescription = itemDescription;
@@ -51,7 +52,7 @@ namespace StoreInventoryManagement.Domain.Models
             ItemSellPrice = itemSellPrice;
             ItemBuyPrice = itemBuyPrice;
             ItemRarity = itemRarity;
-            ItemCreationDate = itemCreationDate;
+            //ItemCreationDate = itemCreationDate;
         }
     }
 }

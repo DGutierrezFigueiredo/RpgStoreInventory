@@ -8,7 +8,7 @@ namespace StoreInventoryManagement.Domain.Interfaces
 {
     public interface IRpgItemStoreService
     {
-        public RpgInventoryItem CreateItem(RpgInventoryItem rpgInventoryItemJson);
+        public RpgInventoryItem CreateItem(RpgInventoryItem rpgInventoryItem);
 
         public RpgInventoryItem DeleteItem(int itemIdNumber);
 

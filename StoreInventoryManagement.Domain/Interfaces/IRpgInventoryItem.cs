@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace StoreInventoryManagement.Domain.Interfaces
 {
-    interface IRpgInventoryItem
+    public interface IRpgInventoryItem
     {
-        public Guid GetIdGuidNumber();
+        //public Guid GetIdGuidNumber();
         public string GetItemName();
         public void SetItemName(string value);
         public string GetItemDescription();

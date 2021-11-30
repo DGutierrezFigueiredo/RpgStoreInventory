@@ -11,4 +11,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StoreInventoryManagement.Domain\StoreInventoryManagement.Domain.csproj" />
+    <ProjectReference Include="..\StoreInventoryManagement.Infrastructure\StoreInventoryManagement.Infrastructure.csproj" />
+    <ProjectReference Include="..\StoreInventoryManagement.Service\StoreInventoryManagement.Service.csproj" />
+  </ItemGroup>
+
 </Project>

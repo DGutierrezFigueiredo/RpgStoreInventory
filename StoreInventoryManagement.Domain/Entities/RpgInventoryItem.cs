@@ -1,4 +1,6 @@
-﻿using StoreInventoryManagement.Domain.Interfaces;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using StoreInventoryManagement.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +10,17 @@ using System.Threading.Tasks;
 namespace StoreInventoryManagement.Domain
 {
     //Entities go in Domain
-    public class RpgInventoryItem : IRpgInventoryItem
+    public class RpgInventoryItem// : IRpgInventoryItem
     {
-        private readonly Guid _idGuidNumber;
+        //[BsonId]
+        //[BsonRepresentation(BsonType.ObjectId)]
 
-        public Guid GetIdGuidNumber()
-        {
-            return _idGuidNumber;
-        }
+        //private readonly Guid _idGuidNumber;
+
+        //public Guid GetIdGuidNumber()
+        //{
+        //    return _idGuidNumber;
+        //}
 
         private string _itemName;
 
@@ -91,7 +96,7 @@ namespace StoreInventoryManagement.Domain
 
         private DateTime _itemCreationDateOnDB;
 
-        public void SetItemCreationDateOnDB()
+        public void SetItemCreationDateOnDB(DateTime timeNow)
         {
             _itemCreationDateOnDB = DateTime.Now;
         }
@@ -101,23 +106,23 @@ namespace StoreInventoryManagement.Domain
             return _itemCreationDateOnDB;
         }
 
-        internal RpgInventoryItem()
+        public RpgInventoryItem()//antes era internal
         {
 
         }
 
         
-        public RpgInventoryItem(Guid idGuidNumber, string itemName, string itemDescription, bool isKeyItem, decimal itemSellPrice,
-                                                   decimal itemBuyPrice, string itemRarity)//DateTime here on the constructor??
+        public RpgInventoryItem(string itemName, string itemDescription, bool isKeyItem, decimal itemSellPrice,
+                                                   decimal itemBuyPrice, string itemRarity, DateTime itemCriationDateOnDB)//DateTime here on the constructor??
         {
-            _idGuidNumber = idGuidNumber;
-            SetItemName(itemName);
-            SetItemDescription(itemDescription);
-            SetIsKeyItem(isKeyItem);
-            SetItemSellPrice(itemSellPrice);
-            SetItemBuyPrice(itemBuyPrice);
-            SetItemRarity(itemRarity);
-            //_itemCreationDateOnDB = itemCriationDateOnDB;
+            //_idGuidNumber = idGuidNumber;
+            _itemName = itemName;
+            _itemDescription = itemDescription;
+            _isKeyItem = isKeyItem;
+            _itemSellPrice = itemSellPrice;
+            _itemBuyPrice = itemBuyPrice;
+            _itemRarity = itemRarity;
+            _itemCreationDateOnDB = itemCriationDateOnDB;
 
         }
 

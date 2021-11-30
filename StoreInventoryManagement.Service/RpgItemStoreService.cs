@@ -10,9 +10,17 @@ namespace StoreInventoryManagement.Service
 {
     public class RpgItemStoreService : IRpgItemStoreService
     {
-        public RpgInventoryItem CreateItem(RpgInventoryItem rpgInventoryItemJson)
+        private readonly IRpgItemStoreRepository _rpgItemStoreRepository;
+        public RpgItemStoreService(IRpgItemStoreRepository rpgItemStoreRepository)
         {
-            throw new NotImplementedException();
+            _rpgItemStoreRepository = rpgItemStoreRepository;
+        }
+
+        public RpgInventoryItem CreateItem(RpgInventoryItem rpgInventoryItem)
+        {
+            RpgInventoryItem newItem = new RpgInventoryItem();
+            newItem = _rpgItemStoreRepository.Create(rpgInventoryItem);
+            return newItem;
         }
 
         public RpgInventoryItem DeleteItem(int itemIdNumber)

@@ -9,8 +9,8 @@ namespace StoreInventoryManagement.Infrastructure
 {
     public class RpgItemStoreRepositorySettings : IRpgItemStoreRepositorySettings
     {
-        public string RpgStoreItemInventoryCollectionName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string ConnectionString { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string DataBaseName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string RpgStoreItemInventoryCollectionName { get; set; }
+        public string ConnectionString { get; set; }
+        public string DataBaseName { get; set; }
     }
 }

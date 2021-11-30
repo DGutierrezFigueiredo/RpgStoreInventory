@@ -1,4 +1,5 @@
-﻿using StoreInventoryManagement.Domain;
+﻿using MongoDB.Driver;
+using StoreInventoryManagement.Domain;
 using StoreInventoryManagement.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,12 +10,21 @@ using System.Threading.Tasks;
 
 namespace StoreInventoryManagement.Infrastructure
 {
-    class RpgItemStoreRepository : IRpgItemStoreRepository
+    public class RpgItemStoreRepository : IRpgItemStoreRepository
     {
-                
+        private readonly IMongoCollection<RpgInventoryItem> _rpgInventoryItemCollection;
+        public RpgItemStoreRepository(IRpgItemStoreRepositorySettings settings)
+        {
+            var client = new MongoClient(settings.ConnectionString);
+            var database = client.GetDatabase(settings.DataBaseName);
+
+            _rpgInventoryItemCollection = database.GetCollection<RpgInventoryItem>(settings.RpgStoreItemInventoryCollectionName);
+        }
+
         public RpgInventoryItem Create(RpgInventoryItem item)
         {
-            throw new NotImplementedException();
+            _rpgInventoryItemCollection.InsertOne(item);
+            return item;
         }
 
         public List<RpgInventoryItem> GetAllItems()
