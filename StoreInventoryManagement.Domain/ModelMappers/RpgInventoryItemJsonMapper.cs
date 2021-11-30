@@ -12,8 +12,12 @@ namespace StoreInventoryManagement.Domain.ModelMappers
     public class RpgInventoryItemJsonMapper : IRpgInventoryItemJsonMapper
     {
         //Receives a Json file with item's properties and makes the equivalence (json-object's fields) to generate item's object
-
+        //private readonly IRpgInventoryItem _rpgInventoryItem;
         
+        //public RpgInventoryItemJsonMapper(IRpgInventoryItem rpgInventoryItem)
+        //{
+        //    _rpgInventoryItem = rpgInventoryItem;
+        //}
         public RpgInventoryItem RpgInventoryItemMapper(RpgInventoryItemJson rpgInventoryItemJson)
         {
             RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();

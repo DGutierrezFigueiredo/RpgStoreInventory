@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace StoreInventoryManagement.Domain
 {
     //Entities go in Domain
-    public class RpgInventoryItem// : IRpgInventoryItem
+    public class RpgInventoryItem //: IRpgInventoryItem
     {
         //[BsonId]
         //[BsonRepresentation(BsonType.ObjectId)]
@@ -113,7 +113,7 @@ namespace StoreInventoryManagement.Domain
 
         
         public RpgInventoryItem(string itemName, string itemDescription, bool isKeyItem, decimal itemSellPrice,
-                                                   decimal itemBuyPrice, string itemRarity, DateTime itemCriationDateOnDB)//DateTime here on the constructor??
+                                                   decimal itemBuyPrice, string itemRarity)//DateTime here on the constructor??
         {
             //_idGuidNumber = idGuidNumber;
             _itemName = itemName;
@@ -122,7 +122,7 @@ namespace StoreInventoryManagement.Domain
             _itemSellPrice = itemSellPrice;
             _itemBuyPrice = itemBuyPrice;
             _itemRarity = itemRarity;
-            _itemCreationDateOnDB = itemCriationDateOnDB;
+            //_itemCreationDateOnDB = itemCriationDateOnDB;
 
         }
 

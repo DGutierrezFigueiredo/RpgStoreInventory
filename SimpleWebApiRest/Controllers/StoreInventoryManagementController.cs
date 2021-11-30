@@ -42,7 +42,7 @@ namespace StoreInventoryManagement.Api.Controllers
                     RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
                     rpgInventoryItem = _mapper.RpgInventoryItemMapper(rpgInventoryItemJson);
                     rpgInventoryItem = _rpgItemStoreService.CreateItem(rpgInventoryItem);
-                    return Ok(Json.Encode(rpgInventoryItem));
+                    return Ok(rpgInventoryItem);
                 }
                 else
                 {

@@ -21,7 +21,7 @@ namespace StoreInventoryManagement.Domain.Interfaces
         public void SetItemBuyPrice(decimal value);
         public string GetItemRarity();
         public void SetItemRarity(string value);
-        public void SetItemCreationDateOnDB();
+        public void SetItemCreationDateOnDB(DateTime timeNow);
         public DateTime GetItemCreationDateOnDB();
 
     }
