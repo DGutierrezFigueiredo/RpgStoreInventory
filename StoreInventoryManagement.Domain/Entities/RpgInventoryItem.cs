@@ -17,6 +17,7 @@ namespace StoreInventoryManagement.Domain
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }//It has to be a string to se and deserialize
         public Guid IdGuidNumber { get; set; }
+        public int ItemIdNumber { get; set; }
 
         public string ItemName { get; set; }
         public string ItemDescription { get; set; }
@@ -31,11 +32,14 @@ namespace StoreInventoryManagement.Domain
 
         }
 
-        public RpgInventoryItem(string id, Guid idGuidNumber, string itemName, string itemDescription, bool isKeyItem, decimal itemSellPrice,
+        static int itemCount = 0;
+
+        public RpgInventoryItem(string id, Guid idGuidNumber, int itemIdNumber, string itemName, string itemDescription, bool isKeyItem, decimal itemSellPrice,
                                                    decimal itemBuyPrice, string itemRarity, DateTime itemCreationDateOnDb)//DateTime here on the constructor??
         {
             Id = id;
             IdGuidNumber = idGuidNumber;
+            ItemIdNumber = itemIdNumber;
             ItemName = itemName;
             ItemDescription = itemDescription;
             IsKeyItem = isKeyItem;
@@ -43,6 +47,7 @@ namespace StoreInventoryManagement.Domain
             ItemBuyPrice = itemBuyPrice;
             ItemRarity = itemRarity;
             ItemCreationDateOnDb = itemCreationDateOnDb;
+            
 
         }
 

@@ -31,9 +31,11 @@ namespace StoreInventoryManagement.Infrastructure
             _rpgInventoryItemCollection.Find(item => true).SortBy(item => item.ItemName).ToList();
                     
 
-        public RpgInventoryItem GetItemByIdNumber(int ItemIdNumber)
+        public RpgInventoryItem GetItemByIdNumber(int itemIdNumber)
         {
-            throw new NotImplementedException();
+            RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+            rpgInventoryItem = _rpgInventoryItemCollection.Find<RpgInventoryItem>(item => item.ItemIdNumber == itemIdNumber).FirstOrDefault();
+            return rpgInventoryItem;
         }
 
         public RpgInventoryItem Remove(int ItemIdNumber)

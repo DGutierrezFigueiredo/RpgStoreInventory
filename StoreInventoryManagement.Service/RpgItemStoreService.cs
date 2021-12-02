@@ -37,7 +37,9 @@ namespace StoreInventoryManagement.Service
 
         public RpgInventoryItem GetItemByIdNumber(int itemIdNumber)
         {
-            throw new NotImplementedException();
+            RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+            rpgInventoryItem = _rpgItemStoreRepository.GetItemByIdNumber(itemIdNumber);
+            return rpgInventoryItem;
         }
 
         public RpgInventoryItem UpdateBuyPrice(int itemIdNumber, decimal newBuyPrice)

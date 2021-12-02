@@ -76,10 +76,21 @@ namespace StoreInventoryManagement.Api.Controllers
         }
 
         // GET api/<StoreInventoryManagementController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("Get Item by Id Number")]
+        public IActionResult Get(int id)
         {
-            return "value";
+            try
+            {
+                RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+                rpgInventoryItem = _rpgItemStoreService.GetItemByIdNumber(id);
+                return Ok(rpgInventoryItem);
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+           
         }
 
         // PUT api/<StoreInventoryManagementController>/5
