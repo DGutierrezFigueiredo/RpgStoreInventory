@@ -21,16 +21,15 @@ namespace StoreInventoryManagement.Infrastructure
             _rpgInventoryItemCollection = database.GetCollection<RpgInventoryItem>(settings.RpgStoreItemInventoryCollectionName);
         }
 
-        public RpgInventoryItem Create(RpgInventoryItem item)
+        public RpgInventoryItem Create(RpgInventoryItem rpgInventoryItem)
         {
-            _rpgInventoryItemCollection.InsertOne(item);
-            return item;
+            _rpgInventoryItemCollection.InsertOne(rpgInventoryItem);
+            return rpgInventoryItem;
         }
 
-        public List<RpgInventoryItem> GetAllItems()
-        {
-            throw new NotImplementedException();
-        }
+        public List<RpgInventoryItem> GetAllItems() => 
+            _rpgInventoryItemCollection.Find(item => true).ToList();
+                    
 
         public RpgInventoryItem GetItemByIdNumber(int ItemIdNumber)
         {

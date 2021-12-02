@@ -30,7 +30,9 @@ namespace StoreInventoryManagement.Service
 
         public List<RpgInventoryItem> GetAllItems()
         {
-            throw new NotImplementedException();
+            List<RpgInventoryItem> listOfAllItems = new List<RpgInventoryItem>();
+            listOfAllItems = _rpgItemStoreRepository.GetAllItems();
+            return listOfAllItems;
         }
 
         public RpgInventoryItem GetItemByIdNumber(int itemIdNumber)

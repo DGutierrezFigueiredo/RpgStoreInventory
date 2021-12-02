@@ -30,7 +30,7 @@ namespace StoreInventoryManagement.Api.Controllers
 
         
         // POST api/<StoreInventoryManagementController>
-        [HttpPost("Create new Item")]
+        [HttpPost("Create New Item")]
         public IActionResult CreateNewItem (RpgInventoryItemJson rpgInventoryItemJson)
         {
             try
@@ -58,10 +58,21 @@ namespace StoreInventoryManagement.Api.Controllers
         }
 
         // GET: api/<StoreInventoryManagementController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("Get All Items")]
+        public ActionResult<RpgInventoryItem> GetAllItems()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                List<RpgInventoryItem> listOfAllItems = new List<RpgInventoryItem>();
+                listOfAllItems = _rpgItemStoreService.GetAllItems();
+                return Ok(listOfAllItems);
+
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
         }
 
         // GET api/<StoreInventoryManagementController>/5

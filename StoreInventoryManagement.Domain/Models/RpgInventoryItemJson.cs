@@ -23,8 +23,8 @@ namespace StoreInventoryManagement.Domain.Models
         [JsonPropertyName("Is Key Item")]
         public bool IsKeyItem { get; set; }
 
-        [JsonPropertyName("Item Sell Price")]
-        public decimal  ItemSellPrice { get; set; }
+        //[JsonPropertyName("Item Sell Price")]
+        //public decimal  ItemSellPrice { get; set; }
 
         [JsonPropertyName("Item Buy Price")]
         public decimal ItemBuyPrice { get; set; }
@@ -43,13 +43,12 @@ namespace StoreInventoryManagement.Domain.Models
 
         }
 
-        public RpgInventoryItemJson(string inventoryItemName, string itemDescription, bool isKeyItem, decimal itemSellPrice, 
-                                    decimal itemBuyPrice, string itemRarity)
+        public RpgInventoryItemJson(string inventoryItemName, string itemDescription, bool isKeyItem, decimal itemBuyPrice, string itemRarity)
         {
             InventoryItemName = inventoryItemName;
             ItemDescription = itemDescription;
             IsKeyItem = isKeyItem;
-            ItemSellPrice = itemSellPrice;
+            //ItemSellPrice = itemSellPrice;
             ItemBuyPrice = itemBuyPrice;
             ItemRarity = itemRarity;
             //ItemCreationDate = itemCreationDate;

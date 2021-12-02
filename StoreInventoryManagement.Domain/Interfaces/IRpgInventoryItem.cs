@@ -9,6 +9,8 @@ namespace StoreInventoryManagement.Domain.Interfaces
     public interface IRpgInventoryItem
     {
         //public Guid GetIdGuidNumber();
+        
+        
         public string GetItemName();
         public void SetItemName(string value);
         public string GetItemDescription();
