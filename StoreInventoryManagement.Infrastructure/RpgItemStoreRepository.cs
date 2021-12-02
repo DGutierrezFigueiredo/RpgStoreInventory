@@ -28,7 +28,7 @@ namespace StoreInventoryManagement.Infrastructure
         }
 
         public List<RpgInventoryItem> GetAllItems() => 
-            _rpgInventoryItemCollection.Find(item => true).ToList();
+            _rpgInventoryItemCollection.Find(item => true).SortBy(item => item.ItemName).ToList();
                     
 
         public RpgInventoryItem GetItemByIdNumber(int ItemIdNumber)
