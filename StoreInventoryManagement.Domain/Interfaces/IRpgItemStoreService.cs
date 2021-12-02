@@ -10,15 +10,15 @@ namespace StoreInventoryManagement.Domain.Interfaces
     {
         public RpgInventoryItem CreateItem(RpgInventoryItem rpgInventoryItem);
 
-        public RpgInventoryItem DeleteItem(int itemIdNumber);
+        public RpgInventoryItem DeleteItem(string itemIdNumber);
 
         public List<RpgInventoryItem> GetAllItems();
 
-        public RpgInventoryItem GetItemByIdNumber(int itemIdNumber);
+        public RpgInventoryItem GetItemByIdNumber(string itemIdNumber);
 
-        public RpgInventoryItem UpdateSellPrice(int itemIdNumber, decimal newSellPrice);
+        public RpgInventoryItem UpdateSellPrice(string itemIdNumber, decimal newSellPrice);
 
-        public RpgInventoryItem UpdateBuyPrice(int itemIdNumber, decimal newBuyPrice);
+        public RpgInventoryItem UpdateBuyPrice(string itemIdNumber, decimal newBuyPrice);
 
     }
 }

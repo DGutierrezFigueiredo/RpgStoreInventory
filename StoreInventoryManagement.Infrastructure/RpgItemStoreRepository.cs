@@ -31,24 +31,26 @@ namespace StoreInventoryManagement.Infrastructure
             _rpgInventoryItemCollection.Find(item => true).SortBy(item => item.ItemName).ToList();
                     
 
-        public RpgInventoryItem GetItemByIdNumber(int itemIdNumber)
+        public RpgInventoryItem GetItemByIdNumber(string itemIdNumber)
         {
             RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
-            rpgInventoryItem = _rpgInventoryItemCollection.Find<RpgInventoryItem>(item => item.ItemIdNumber == itemIdNumber).FirstOrDefault();
+            rpgInventoryItem = _rpgInventoryItemCollection.Find<RpgInventoryItem>(item => item.IdGuidNumber == Guid.Parse(itemIdNumber)).FirstOrDefault();
             return rpgInventoryItem;
         }
 
-        public RpgInventoryItem Remove(int ItemIdNumber)
+        public RpgInventoryItem Remove(string ItemIdNumber)
+        {
+            RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+            rpgInventoryItem = _rpgInventoryItemCollection.FindOneAndDelete(item => item.IdGuidNumber == Guid.Parse(ItemIdNumber));
+            return rpgInventoryItem;
+        }
+
+        public RpgInventoryItem UpdateBuyPrice(string ItemIdNumber, decimal newBuyPrice)
         {
             throw new NotImplementedException();
         }
 
-        public RpgInventoryItem UpdateBuyPrice(int ItemIdNumber, decimal newBuyPrice)
-        {
-            throw new NotImplementedException();
-        }
-
-        public RpgInventoryItem UpdateSellPrice(int ItemIdNumber, decimal newSellPrice)
+        public RpgInventoryItem UpdateSellPrice(string ItemIdNumber, decimal newSellPrice)
         {
             throw new NotImplementedException();
         }

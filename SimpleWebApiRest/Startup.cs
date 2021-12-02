@@ -55,7 +55,7 @@ namespace StoreInventoryManagementWebApiRest
 
             services.AddScoped<IRpgItemStorePriceCalculator, RpgItemStorePriceCalculator>();
 
-            //services.AddScoped<IRpgInventoryItem, RpgInventoryItem>();
+            services.AddScoped<IRpgInventoryItem, RpgInventoryItem>();
 
         }
 

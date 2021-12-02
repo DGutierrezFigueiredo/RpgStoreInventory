@@ -23,14 +23,13 @@ namespace StoreInventoryManagement.Domain.ModelMappers
         }
 
 
-        static int itemCount = 0;
+
         public RpgInventoryItem RpgInventoryItemMapper(RpgInventoryItemJson rpgInventoryItemJson)
         {
-            
+
             RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
-            
+
             rpgInventoryItem.IdGuidNumber = Guid.NewGuid();
-            rpgInventoryItem.ItemIdNumber = itemCount;
             rpgInventoryItem.ItemName = rpgInventoryItemJson.InventoryItemName;
             rpgInventoryItem.ItemDescription = rpgInventoryItemJson.ItemDescription;
             rpgInventoryItem.IsKeyItem = rpgInventoryItemJson.IsKeyItem;
@@ -38,8 +37,6 @@ namespace StoreInventoryManagement.Domain.ModelMappers
             rpgInventoryItem.ItemBuyPrice = rpgInventoryItemJson.ItemBuyPrice;
             rpgInventoryItem.ItemRarity = rpgInventoryItemJson.ItemRarity;
             rpgInventoryItem.ItemCreationDateOnDb = DateTime.Now;
-            itemCount++;
-
 
             return rpgInventoryItem;
         }

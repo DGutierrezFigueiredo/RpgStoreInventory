@@ -23,9 +23,11 @@ namespace StoreInventoryManagement.Service
             return newItem;
         }
 
-        public RpgInventoryItem DeleteItem(int itemIdNumber)
+        public RpgInventoryItem DeleteItem(string itemIdNumber)
         {
-            throw new NotImplementedException();
+            RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+            rpgInventoryItem = _rpgItemStoreRepository.Remove(itemIdNumber);
+            return rpgInventoryItem;
         }
 
         public List<RpgInventoryItem> GetAllItems()
@@ -35,19 +37,19 @@ namespace StoreInventoryManagement.Service
             return listOfAllItems;
         }
 
-        public RpgInventoryItem GetItemByIdNumber(int itemIdNumber)
+        public RpgInventoryItem GetItemByIdNumber(string itemIdNumber)
         {
             RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
             rpgInventoryItem = _rpgItemStoreRepository.GetItemByIdNumber(itemIdNumber);
             return rpgInventoryItem;
         }
 
-        public RpgInventoryItem UpdateBuyPrice(int itemIdNumber, decimal newBuyPrice)
+        public RpgInventoryItem UpdateBuyPrice(string itemIdNumber, decimal newBuyPrice)
         {
             throw new NotImplementedException();
         }
 
-        public RpgInventoryItem UpdateSellPrice(int itemIdNumber, decimal newSellPrice)
+        public RpgInventoryItem UpdateSellPrice(string itemIdNumber, decimal newSellPrice)
         {
             throw new NotImplementedException();
         }

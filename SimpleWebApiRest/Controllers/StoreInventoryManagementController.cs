@@ -28,16 +28,16 @@ namespace StoreInventoryManagement.Api.Controllers
 
         }
 
-        
+
         // POST api/<StoreInventoryManagementController>
         [HttpPost("Create New Item")]
-        public IActionResult CreateNewItem (RpgInventoryItemJson rpgInventoryItemJson)
+        public IActionResult CreateNewItem(RpgInventoryItemJson rpgInventoryItemJson)
         {
             try
             {
                 TryValidateModel(rpgInventoryItemJson);
 
-                    if(ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
                     RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
                     rpgInventoryItem = _mapper.RpgInventoryItemMapper(rpgInventoryItemJson);
@@ -52,7 +52,7 @@ namespace StoreInventoryManagement.Api.Controllers
             }
             catch (Exception e)
             {
-                               
+
                 return StatusCode(400, e.Message);
             }
         }
@@ -70,14 +70,13 @@ namespace StoreInventoryManagement.Api.Controllers
             }
             catch (Exception e)
             {
-
                 return StatusCode(500, e.Message);
             }
         }
 
         // GET api/<StoreInventoryManagementController>/5
-        [HttpGet("Get Item by Id Number")]
-        public IActionResult Get(int id)
+        [HttpGet("Get Item by Id Number - guid")]
+        public IActionResult Get(string id)
         {
             try
             {
@@ -90,7 +89,7 @@ namespace StoreInventoryManagement.Api.Controllers
 
                 return StatusCode(500, e.Message);
             }
-           
+
         }
 
         // PUT api/<StoreInventoryManagementController>/5
@@ -100,9 +99,20 @@ namespace StoreInventoryManagement.Api.Controllers
         }
 
         // DELETE api/<StoreInventoryManagementController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("Delete an Item by its Id number")]
+        public IActionResult Delete(string id)
         {
+            try
+            {
+                RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+                rpgInventoryItem = _rpgItemStoreService.DeleteItem(id);
+                return Ok(rpgInventoryItem);
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
         }
     }
 }
