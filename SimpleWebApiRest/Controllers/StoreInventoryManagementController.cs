@@ -109,6 +109,22 @@ namespace StoreInventoryManagement.Api.Controllers
             }
         }
 
+        [HttpPut("Update fields by Id Number - guid. Fields - NAME, DESCRIPTION, BUYPRICE, RARITY, ISKEYITEM")]
+        public IActionResult UpdateItemfield(string id, string field, string newValue)
+        {
+            try
+            {
+                RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+                rpgInventoryItem = _rpgItemStoreService.UpdateItemField(id, field,newValue);
+                return Ok(rpgInventoryItem);
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+        }
+
         // DELETE api/<StoreInventoryManagementController>/5
         [HttpDelete("Delete an Item by its Id Number - guid")]
         public IActionResult Delete(string id)

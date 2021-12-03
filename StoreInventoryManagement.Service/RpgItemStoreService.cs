@@ -43,7 +43,22 @@ namespace StoreInventoryManagement.Service
             rpgInventoryItem = _rpgItemStoreRepository.GetItemByIdNumber(itemIdNumber);
             return rpgInventoryItem;
         }
+                
+        public RpgInventoryItem UpdateItemDescription(string itemIdNumber, string newValue)
+        {
+            RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+            rpgInventoryItem = _rpgItemStoreRepository.UpdateItemDescription(itemIdNumber, newValue);
+            return rpgInventoryItem;
+        }
 
+        public RpgInventoryItem UpdateItemField(string id, string field, string newValue)
+        {
+
+            RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+            rpgInventoryItem = _rpgItemStoreRepository.UpdateItemField(id, field, newValue);
+            return rpgInventoryItem;
+
+        }
         public RpgInventoryItem UpdateBuyPrice(string itemIdNumber, decimal newBuyPrice)
         {
             throw new NotImplementedException();
@@ -52,13 +67,6 @@ namespace StoreInventoryManagement.Service
         public RpgInventoryItem UpdateSellPrice(string itemIdNumber, decimal newSellPrice)
         {
             throw new NotImplementedException();
-        }
-
-        public RpgInventoryItem UpdateItemDescription(string itemIdNumber, string newValue)
-        {
-            RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
-            rpgInventoryItem = _rpgItemStoreRepository.UpdateItemDescription(itemIdNumber, newValue);
-            return rpgInventoryItem;
         }
     }
 }

@@ -22,5 +22,7 @@ namespace StoreInventoryManagement.Domain.Interfaces
 
         public RpgInventoryItem UpdateItemDescription(string ItemIdNumber, string newValue);
 
+        public RpgInventoryItem UpdateItemField(string id, string field, string newValue);
+
     }
 }
