@@ -53,5 +53,12 @@ namespace StoreInventoryManagement.Service
         {
             throw new NotImplementedException();
         }
+
+        public RpgInventoryItem UpdateItemDescription(string itemIdNumber, string newValue)
+        {
+            RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+            rpgInventoryItem = _rpgItemStoreRepository.UpdateItemDescription(itemIdNumber, newValue);
+            return rpgInventoryItem;
+        }
     }
 }

@@ -20,5 +20,8 @@ namespace StoreInventoryManagement.Domain.Interfaces
 
         public RpgInventoryItem UpdateBuyPrice(string itemIdNumber, decimal newBuyPrice);
 
+        public RpgInventoryItem UpdateItemDescription(string ItemIdNumber, string newValue);
+        
+
     }
 }

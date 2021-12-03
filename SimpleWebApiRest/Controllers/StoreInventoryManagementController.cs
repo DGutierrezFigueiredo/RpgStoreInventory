@@ -93,13 +93,24 @@ namespace StoreInventoryManagement.Api.Controllers
         }
 
         // PUT api/<StoreInventoryManagementController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("Update Item Description by Id Number - guid")]
+        public IActionResult UpdateItemDescription(string id, string newValue)
         {
+            try
+            {
+                RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+                rpgInventoryItem = _rpgItemStoreService.UpdateItemDescription(id, newValue);
+                return Ok(rpgInventoryItem);
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
         }
 
         // DELETE api/<StoreInventoryManagementController>/5
-        [HttpDelete("Delete an Item by its Id number")]
+        [HttpDelete("Delete an Item by its Id Number - guid")]
         public IActionResult Delete(string id)
         {
             try

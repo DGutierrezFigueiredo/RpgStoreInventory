@@ -28,7 +28,6 @@ namespace StoreInventoryManagement.Domain.ModelMappers
         {
 
             RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
-
             rpgInventoryItem.IdGuidNumber = Guid.NewGuid();
             rpgInventoryItem.ItemName = rpgInventoryItemJson.InventoryItemName;
             rpgInventoryItem.ItemDescription = rpgInventoryItemJson.ItemDescription;

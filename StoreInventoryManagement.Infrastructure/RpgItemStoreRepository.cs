@@ -27,9 +27,9 @@ namespace StoreInventoryManagement.Infrastructure
             return rpgInventoryItem;
         }
 
-        public List<RpgInventoryItem> GetAllItems() => 
+        public List<RpgInventoryItem> GetAllItems() =>
             _rpgInventoryItemCollection.Find(item => true).SortBy(item => item.ItemName).ToList();
-                    
+
 
         public RpgInventoryItem GetItemByIdNumber(string itemIdNumber)
         {
@@ -53,6 +53,16 @@ namespace StoreInventoryManagement.Infrastructure
         public RpgInventoryItem UpdateSellPrice(string ItemIdNumber, decimal newSellPrice)
         {
             throw new NotImplementedException();
+        }
+
+        public RpgInventoryItem UpdateItemDescription(string itemIdNumber, string newValue)
+        {
+            RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+            rpgInventoryItem = GetItemByIdNumber(itemIdNumber);
+            rpgInventoryItem.ItemDescription = newValue;
+            _rpgInventoryItemCollection.ReplaceOne(item => item.IdGuidNumber == Guid.Parse(itemIdNumber), rpgInventoryItem);
+            rpgInventoryItem = GetItemByIdNumber(itemIdNumber);
+            return rpgInventoryItem;
         }
     }
 }
