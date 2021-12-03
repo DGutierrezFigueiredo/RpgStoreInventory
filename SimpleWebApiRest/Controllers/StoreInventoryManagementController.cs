@@ -114,8 +114,30 @@ namespace StoreInventoryManagement.Api.Controllers
         {
             try
             {
+                string[] arrOfOptions = new string[] { "name", "description", "buyprice", "rarity", "iskeyitem" };
+                bool isValidOption = false;
+
+                foreach (string option in arrOfOptions)
+                {
+                    if (option.ToUpper() != field.ToUpper())
+                    {
+                        isValidOption = false;
+                    }
+                    else
+                    {
+                        isValidOption = true;
+                        break;
+                    }
+                    
+                }
+
+                if(field.ToUpper() == "BUYPRICE" && decimal.Parse(newValue) < 0) { isValidOption = false; }
+
+                if (!isValidOption) { throw new ArgumentException("Property to be changedd must be one of the " +
+                                                         "specified values for 'field'. BuyPrice must be equal or greater than 0"); }
+
                 RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
-                rpgInventoryItem = _rpgItemStoreService.UpdateItemField(id, field,newValue);
+                rpgInventoryItem = _rpgItemStoreService.UpdateItemField(id, field, newValue);
                 return Ok(rpgInventoryItem);
             }
             catch (Exception e)
