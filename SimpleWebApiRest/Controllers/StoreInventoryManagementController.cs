@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using StoreInventoryManagement.Domain;
 using StoreInventoryManagement.Domain.Interfaces;
 using StoreInventoryManagement.Domain.ModelMappers;
 using StoreInventoryManagement.Domain.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web.Helpers;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,6 +28,9 @@ namespace StoreInventoryManagement.Api.Controllers
 
 
         // POST api/<StoreInventoryManagementController>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost("Create New Item")]
         public IActionResult CreateNewItem(RpgInventoryItemJson rpgInventoryItemJson)
         {
@@ -53,11 +54,13 @@ namespace StoreInventoryManagement.Api.Controllers
             catch (Exception e)
             {
 
-                return StatusCode(400, e.Message);
+                return StatusCode(500, e.Message);
             }
         }
 
         // GET: api/<StoreInventoryManagementController>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("Get All Items")]
         public ActionResult<RpgInventoryItem> GetAllItems()
         {
@@ -75,24 +78,41 @@ namespace StoreInventoryManagement.Api.Controllers
         }
 
         // GET api/<StoreInventoryManagementController>/5
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("Get Item by Id Number - guid")]
         public IActionResult Get(string id)
         {
             try
             {
-                RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
-                rpgInventoryItem = _rpgItemStoreService.GetItemByIdNumber(id);
-                return Ok(rpgInventoryItem);
+                if (id.Length == 36)
+                {
+                    RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
+                    rpgInventoryItem = _rpgItemStoreService.GetItemByIdNumber(id);
+                    return Ok(rpgInventoryItem);
+                }
+
+                else
+                {
+                    ArgumentException e = new ArgumentException();
+                    return BadRequest(e.Message);//invalid Id personalized ex.Message
+                }
+
             }
+
             catch (Exception e)
             {
-
                 return StatusCode(500, e.Message);
             }
-
         }
 
         // PUT api/<StoreInventoryManagementController>/5
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPut("Update Item Description by Id Number - guid")]
         public IActionResult UpdateItemDescription(string id, string newValue)
         {
@@ -102,9 +122,16 @@ namespace StoreInventoryManagement.Api.Controllers
                 rpgInventoryItem = _rpgItemStoreService.UpdateItemDescription(id, newValue);
                 return Ok(rpgInventoryItem);
             }
+            catch (KeyNotFoundException e)
+            {
+                return StatusCode(404, e.Message);
+            }
+            catch (ArgumentException e)
+            {
+                return StatusCode(400, e.Message);
+            }
             catch (Exception e)
             {
-
                 return StatusCode(500, e.Message);
             }
         }
@@ -128,13 +155,16 @@ namespace StoreInventoryManagement.Api.Controllers
                         isValidOption = true;
                         break;
                     }
-                    
+
                 }
 
-                if(field.ToUpper() == "BUYPRICE" && decimal.Parse(newValue) < 0) { isValidOption = false; }
+                if (field.ToUpper() == "BUYPRICE" && decimal.Parse(newValue) < 0) { isValidOption = false; }
 
-                if (!isValidOption) { throw new ArgumentException("Property to be changedd must be one of the " +
-                                                         "specified values for 'field'. BuyPrice must be equal or greater than 0"); }
+                if (!isValidOption)
+                {
+                    throw new ArgumentException("Property to be changedd must be one of the " +
+                                       "specified values for 'field'. BuyPrice must be equal or greater than 0");
+                }
 
                 RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
                 rpgInventoryItem = _rpgItemStoreService.UpdateItemField(id, field, newValue);

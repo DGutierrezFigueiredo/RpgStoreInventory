@@ -15,7 +15,7 @@ namespace StoreInventoryManagement.Domain
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }//It has to be a string to se and deserialize
+        public string Id { get; set; }
         public Guid IdGuidNumber { get; set; }
         public string ItemName { get; set; }
         public string ItemDescription { get; set; }
