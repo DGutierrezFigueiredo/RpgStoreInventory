@@ -10,7 +10,7 @@ namespace StoreInventoryManagement.Domain.Models
 {
     public class RpgInventoryItemJson //: IRpgInventoryItemJson
     {
-        ///[JsonPropertyName("Id")]//
+        ///[JsonPropertyName("Id")]
         //public string Id { get; }
         //This is kind of a DTO
 
