@@ -80,7 +80,6 @@ namespace StoreInventoryManagement.Api.Controllers
         // GET api/<StoreInventoryManagementController>/5
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("Get Item by Id Number - guid")]
         public IActionResult Get(string id)
@@ -111,7 +110,6 @@ namespace StoreInventoryManagement.Api.Controllers
         // PUT api/<StoreInventoryManagementController>/5
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPut("Update Item Description by Id Number - guid")]
         public IActionResult UpdateItemDescription(string id, string newValue)
@@ -121,10 +119,6 @@ namespace StoreInventoryManagement.Api.Controllers
                 RpgInventoryItem rpgInventoryItem = new RpgInventoryItem();
                 rpgInventoryItem = _rpgItemStoreService.UpdateItemDescription(id, newValue);
                 return Ok(rpgInventoryItem);
-            }
-            catch (KeyNotFoundException e)
-            {
-                return StatusCode(404, e.Message);
             }
             catch (ArgumentException e)
             {
@@ -136,7 +130,9 @@ namespace StoreInventoryManagement.Api.Controllers
             }
         }
 
-        [HttpPut("Update fields by Id Number - guid. Fields - NAME, DESCRIPTION, BUYPRICE, RARITY, ISKEYITEM")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpPut("Update fields by guidId. Fields - NAME, DESCRIPTION, BUYPRICE, RARITY, ISKEYITEM")]
         public IActionResult UpdateItemfield(string id, string field, string newValue)
         {
             try
@@ -172,12 +168,13 @@ namespace StoreInventoryManagement.Api.Controllers
             }
             catch (Exception e)
             {
-
                 return StatusCode(500, e.Message);
             }
         }
 
         // DELETE api/<StoreInventoryManagementController>/5
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpDelete("Delete an Item by its Id Number - guid")]
         public IActionResult Delete(string id)
         {
