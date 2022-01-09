@@ -81,7 +81,7 @@ namespace StoreInventoryManagement.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpGet("Get Item by Id Number - guid")]
+        [HttpGet("Get Item by guidId")]
         public IActionResult Get(string id)
         {
             try
@@ -111,7 +111,7 @@ namespace StoreInventoryManagement.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpPut("Update Item Description by Id Number - guid")]
+        [HttpPut("Update Item Description by guidId")]
         public IActionResult UpdateItemDescription(string id, string newValue)
         {
             try
@@ -186,7 +186,6 @@ namespace StoreInventoryManagement.Api.Controllers
             }
             catch (Exception e)
             {
-
                 return StatusCode(500, e.Message);
             }
         }

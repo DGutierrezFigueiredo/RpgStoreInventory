@@ -21,7 +21,7 @@ namespace McInventoryManagement.Domain.Entities
           //return null;
         }
 
-        public List<McInventory> GetMcItems()
+        public List<Items> GetMcItems()
         {
           ////something some
         }
