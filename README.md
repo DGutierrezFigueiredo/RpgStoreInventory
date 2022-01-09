@@ -15,5 +15,9 @@
 
 -Delete an item  
 
+<b> Under Development </b>
+
+-A second API that manages Main player's inventory and consumes data from the first API
+
   
   
