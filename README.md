@@ -17,7 +17,7 @@
 
 <b> Under Development </b>
 
--A second API that manages Main player's inventory and consumes data from the first API
+-A second API, McInventory Api, that manages Main player's inventory and consumes data from the StoreInventory API
 
   
   
