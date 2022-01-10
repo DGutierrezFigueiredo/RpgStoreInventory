@@ -13,14 +13,10 @@ namespace McInventoryManagement.Domain.Entities
         public string ItemDescription { get; set; }
         public string ItemRarity { get; set; }
         public static int ItemQuantity { get; private set; }
-        public static double McFunds { get; private set; }
 
-        public List<Items> GetItems()
-        {
-          ////something 
-          //return null;
-        }
+        //public static double McFunds { get; private set; }
 
+        
         public List<Items> GetMcItems()
         {
           ////something some
