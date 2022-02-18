@@ -15,9 +15,7 @@
 
 -Delete an item  
 
-<b> Under Development </b>
 
--A second API, McInventory Api, that manages Main player's inventory and consumes data from the StoreInventory API
 
   
   
