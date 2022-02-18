@@ -1,7 +1,7 @@
 <b>Simple CRUD to manipulate items of a fictitious RPG game item Shop.</b>  
 
 
-<b>Feats so far:  </b>
+<b>Feats:  </b>
 
 -Create a new item  
 
