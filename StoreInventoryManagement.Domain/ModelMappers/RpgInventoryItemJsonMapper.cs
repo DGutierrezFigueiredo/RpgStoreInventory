@@ -14,7 +14,7 @@ namespace StoreInventoryManagement.Domain.ModelMappers
 {
     public class RpgInventoryItemJsonMapper : IRpgInventoryItemJsonMapper
     {
-        //Receives a Json file with item's properties and makes the equivalence (json-object's fields) to generate item's object
+        
         private readonly IRpgItemStorePriceCalculator _rpgItemStorePriceCalculator;
 
         public RpgInventoryItemJsonMapper(IRpgItemStorePriceCalculator rpgItemStorePriceCalculator)

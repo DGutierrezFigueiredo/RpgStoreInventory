@@ -17,12 +17,12 @@ namespace StoreInventoryManagement.Api.Controllers
     {
         private readonly IRpgItemStoreService _rpgItemStoreService;
         private readonly IRpgInventoryItemJsonMapper _mapper;
-        //private readonly IRpgInventoryItem _rpgInventoryItem;
+        
         public StoreInventoryManagementController(IRpgItemStoreService rpgItemStoreService, IRpgInventoryItemJsonMapper mapper)
         {
             _rpgItemStoreService = rpgItemStoreService;
             _mapper = mapper;
-            //_rpgInventoryItem = rpgInventoryItem;
+            
 
         }
 
@@ -96,7 +96,7 @@ namespace StoreInventoryManagement.Api.Controllers
                 else
                 {
                     ArgumentException e = new ArgumentException();
-                    return BadRequest(e.Message);//invalid Id personalized ex.Message
+                    return BadRequest(e.Message);
                 }
 
             }
